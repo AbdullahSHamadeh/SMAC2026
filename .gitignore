@@ -1,0 +1,37 @@
+# macOS and editors
+.DS_Store
+.idea/
+*.iml
+.vscode/
+
+# Flutter and Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# JavaScript tooling
+node_modules/
+.next/
+dist/
+out/
+
+# Local work and generated output
+work/
+outputs/

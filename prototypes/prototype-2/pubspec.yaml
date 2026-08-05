@@ -1,0 +1,24 @@
+name: family_compass
+description: Consent-based AI family hub prototype.
+publish_to: "none"
+version: 0.2.0+2
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  http: ^1.2.2
+  intl: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true

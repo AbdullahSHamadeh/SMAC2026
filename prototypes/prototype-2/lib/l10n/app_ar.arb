@@ -1,0 +1,115 @@
+{
+  "@@locale": "ar",
+  "appName": "بوصلة العائلة",
+  "tabToday": "اليوم",
+  "tabChat": "الدردشة",
+  "tabCompass": "البوصلة",
+  "tabTogether": "معًا",
+  "actionReply": "رد",
+  "actionViewPlan": "عرض الخطة",
+  "actionDismiss": "تجاهل",
+  "actionCreatePlan": "إنشاء خطة",
+  "todayTitle": "اليوم",
+  "todayGreeting": "أهلًا، {name}",
+  "todayNextGathering": "التجمع القادم",
+  "todayNeedsYourReply": "ينتظر ردك",
+  "todaySharedUpdates": "التحديثات المشتركة",
+  "todayCompassSuggestion": "اقتراح البوصلة",
+  "todayFamilyDinner": "عشاء عائلي",
+  "todayDinnerDetails": "{day}، الساعة {time}",
+  "todayRsvpPrompt": "هل يمكنك الحضور؟",
+  "todayNoUrgentUpdates": "لا يوجد ما يحتاج إلى انتباهك الآن.",
+  "pollTitle": "اختيار الوقت",
+  "pollDinnerQuestion": "متى يناسبنا العشاء العائلي؟",
+  "pollOptionDayTime": "{day}، {time}",
+  "pollGoing": "سأحضر",
+  "pollMaybe": "ربما",
+  "pollCannotGo": "لا أستطيع الحضور",
+  "pollSuggestAnother": "اقتراح وقت آخر",
+  "pollDecisionDeadline": "يرجى الرد قبل {deadline}",
+  "pollResponsesCount": "{count, plural, =0{لا توجد ردود بعد} =1{رد واحد} =2{ردان} few{{count} ردود} many{{count} ردًا} other{{count} رد}}",
+  "compassTitle": "البوصلة",
+  "compassPrivateLabel": "خاص بك",
+  "compassPrivateDescription": "محادثتك مع البوصلة خاصة بك.",
+  "compassInputHint": "اسأل البوصلة عن تحديث مشترك أو خطة عائلية",
+  "compassExampleQuestion": "أين أبي؟",
+  "compassGroundedAnswer": "شارك الأب أنه في العمل حتى الساعة {time}.",
+  "compassSourceMemberShared": "مشاركة من الأب",
+  "compassFreshnessCurrent": "محدّث",
+  "compassFreshnessStale": "قد لا يكون محدّثًا",
+  "compassNoRecentUpdate": "لا يوجد تحديث حديث",
+  "compassCannotInfer": "لا يوجد لدي تحديث حديث شاركه هذا الشخص معك.",
+  "compassGatheringSuggestion": "مساء الجمعة يبدو مناسبًا للجميع. هل نخطط لعشاء عائلي؟",
+  "compassAnswerVisibility": "هذه الإجابة ظاهرة لك وحدك.",
+  "compassGroupMentionHint": "استخدم @Compass في دردشة العائلة للحصول على إجابة يراها الجميع.",
+  "mySharingTitle": "مشاركتي",
+  "mySharingDescription": "أنت تختار ما يمكن لعائلتك رؤيته والمدة التي يبقى فيها متاحًا.",
+  "mySharingStatus": "حالة المشاركة",
+  "mySharingNotSharing": "لا توجد مشاركة الآن",
+  "mySharingManualCheckIn": "تحديث يدوي",
+  "mySharingEta": "مشاركة وقت الوصول المتوقع",
+  "mySharingAudience": "من يمكنه رؤية هذا",
+  "mySharingEveryone": "جميع أفراد العائلة",
+  "mySharingSelectedPeople": "أشخاص محددون",
+  "mySharingExpires": "تنتهي المشاركة تلقائيًا",
+  "mySharingExpiresIn": "تنتهي بعد {duration}",
+  "mySharingPause": "إيقاف المشاركة مؤقتًا",
+  "mySharingStop": "إنهاء المشاركة",
+  "mySharingPrivateControl": "أنت وحدك من يمكنه تغيير إعدادات المشاركة الخاصة بك.",
+  "mySharingNeutralForOthers": "سيظهر للآخرين “لا يوجد تحديث حديث” عندما لا تكون مشاركًا.",
+  "@todayGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayDinnerDetails": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@pollOptionDayTime": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@pollDecisionDeadline": {
+    "placeholders": {
+      "deadline": {
+        "type": "String"
+      }
+    }
+  },
+  "@pollResponsesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@compassGroundedAnswer": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mySharingExpiresIn": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  }
+}
