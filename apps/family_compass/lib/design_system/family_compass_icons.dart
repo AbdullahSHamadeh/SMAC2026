@@ -1,0 +1,94 @@
+import 'package:flutter/cupertino.dart';
+
+/// One optically consistent symbol vocabulary for Family Compass.
+///
+/// The semantic names let features describe intent while the design system
+/// chooses the glyph. Cupertino symbols are used because they align with the
+/// native system type and remain crisp at phone toolbar and tab-bar sizes.
+abstract final class FamilyCompassIcons {
+  static const todayOutline = CupertinoIcons.house;
+  static const todayFilled = CupertinoIcons.house_fill;
+  static const chatOutline = CupertinoIcons.chat_bubble_2;
+  static const chatFilled = CupertinoIcons.chat_bubble_2_fill;
+  static const compassOutline = CupertinoIcons.compass;
+  static const compassFilled = CupertinoIcons.compass_fill;
+  static const togetherOutline = CupertinoIcons.person_3;
+  static const togetherFilled = CupertinoIcons.person_3_fill;
+  static const addRounded = CupertinoIcons.add;
+  static const alarmAddOutlined = CupertinoIcons.alarm;
+  static const alarmOnOutlined = CupertinoIcons.alarm_fill;
+  static const alarmOutlined = CupertinoIcons.alarm;
+  static const arrowForwardRounded = CupertinoIcons.chevron_forward;
+  static const arrowUpwardRounded = CupertinoIcons.arrow_up;
+  static const autoStoriesOutlined = CupertinoIcons.book;
+  static const calendarTodayOutlined = CupertinoIcons.calendar;
+  static const calendarTodayRounded = CupertinoIcons.calendar;
+  static const chatBubbleOutlineRounded = CupertinoIcons.chat_bubble;
+  static const chatBubbleRounded = CupertinoIcons.chat_bubble_fill;
+  static const chatOutlined = CupertinoIcons.chat_bubble_2;
+  static const checkCircleOutlineRounded = CupertinoIcons.checkmark_circle;
+  static const checkCircleRounded = CupertinoIcons.checkmark_circle_fill;
+  static const checkRounded = CupertinoIcons.checkmark;
+  static const chevronRightRounded = CupertinoIcons.chevron_forward;
+  static const closeRounded = CupertinoIcons.clear;
+  static const cloudOffOutlined = CupertinoIcons.wifi_exclamationmark;
+  static const contactSupportOutlined = CupertinoIcons.compass;
+  static const contactSupportRounded = CupertinoIcons.compass_fill;
+  static const darkModeOutlined = CupertinoIcons.moon;
+  static const editCalendarOutlined = CupertinoIcons.calendar_badge_plus;
+  static const editNotificationsOutlined = CupertinoIcons.bell_circle;
+  static const editOutlined = CupertinoIcons.pencil;
+  static const errorOutlineRounded = CupertinoIcons.exclamationmark_circle;
+  static const eventAvailableOutlined = CupertinoIcons.person_3;
+  static const eventAvailableRounded = CupertinoIcons.person_3_fill;
+  static const eventNoteOutlined = CupertinoIcons.calendar;
+  static const exploreOutlined = CupertinoIcons.compass;
+  static const factCheckOutlined = CupertinoIcons.doc_checkmark;
+  static const forumOutlined = CupertinoIcons.chat_bubble_2;
+  static const gpsNotFixedOutlined = CupertinoIcons.location_north;
+  static const groupOutlined = CupertinoIcons.person_2;
+  static const helpOutlineRounded = CupertinoIcons.question_circle;
+  static const historyToggleOffOutlined = CupertinoIcons.clock;
+  static const homeOutlined = CupertinoIcons.house;
+  static const howToVoteOutlined = CupertinoIcons.checkmark_rectangle;
+  static const inboxOutlined = CupertinoIcons.tray;
+  static const infoOutlineRounded = CupertinoIcons.info_circle;
+  static const lightbulbOutlineRounded = CupertinoIcons.lightbulb;
+  static const locationOffOutlined = CupertinoIcons.location_slash;
+  static const lockOutlineRounded = CupertinoIcons.lock;
+  static const lockPersonOutlined = CupertinoIcons.lock_shield;
+  static const markChatUnreadOutlined = CupertinoIcons.plus_bubble;
+  static const notificationsActiveOutlined = CupertinoIcons.bell_fill;
+  static const notificationsNoneRounded = CupertinoIcons.bell;
+  static const notificationsOffOutlined = CupertinoIcons.bell_slash;
+  static const passwordRounded = CupertinoIcons.lock_shield;
+  static const pauseCircleOutlineRounded = CupertinoIcons.pause_circle;
+  static const pauseCircleRounded = CupertinoIcons.pause_circle_fill;
+  static const pauseRounded = CupertinoIcons.pause;
+  static const peopleOutlineRounded = CupertinoIcons.person_2;
+  static const personAddAlt1Outlined = CupertinoIcons.person_add;
+  static const personOffOutlined = CupertinoIcons.person_badge_minus;
+  static const personOutlineRounded = CupertinoIcons.person;
+  static const phoneOutlined = CupertinoIcons.phone;
+  static const questionMarkRounded = CupertinoIcons.question;
+  static const radioButtonCheckedRounded = CupertinoIcons.checkmark_circle_fill;
+  static const radioButtonUncheckedRounded = CupertinoIcons.circle;
+  static const refreshRounded = CupertinoIcons.refresh;
+  static const removeCircleOutlineRounded = CupertinoIcons.minus_circle;
+  static const replayRounded = CupertinoIcons.repeat;
+  static const restartAltRounded = CupertinoIcons.restart;
+  static const ruleRounded = CupertinoIcons.doc_checkmark;
+  static const scheduleOutlined = CupertinoIcons.clock;
+  static const scheduleRounded = CupertinoIcons.clock_fill;
+  static const scheduleSendOutlined = CupertinoIcons.paperplane;
+  static const sendOutlined = CupertinoIcons.paperplane;
+  static const sendRounded = CupertinoIcons.paperplane_fill;
+  static const shieldOutlined = CupertinoIcons.shield;
+  static const taskAltRounded = CupertinoIcons.checkmark_seal;
+  static const timerOutlined = CupertinoIcons.timer;
+  static const translateRounded = CupertinoIcons.globe;
+  static const tuneOutlined = CupertinoIcons.slider_horizontal_3;
+  static const verifiedUserOutlined = CupertinoIcons.checkmark_shield;
+  static const visibilityOffOutlined = CupertinoIcons.eye_slash;
+  static const volunteerActivismOutlined = CupertinoIcons.heart;
+}

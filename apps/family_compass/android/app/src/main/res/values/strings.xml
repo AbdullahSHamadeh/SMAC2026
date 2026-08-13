@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="family_updates_channel_id" translatable="false">family_updates</string>
+    <string name="family_updates_channel_name">Family updates</string>
+    <string name="family_updates_channel_description">Messages, plans, polls, and reminders from your family</string>
+</resources>

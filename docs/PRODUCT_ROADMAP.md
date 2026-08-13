@@ -4,6 +4,24 @@
 **Date:** 5 August 2026  
 **Scope:** Current prototype baseline, Prototype 2, Prototype 3, Version 1, and Version 2
 
+## Implementation snapshot, 13 August 2026
+
+The active `0.3.0-dev.1+3` foundation now implements the local Prototype 3
+engineering slice: persistent SQLAlchemy storage, signed development and
+Firebase Emulator authentication, explicit phone invitation choice, family
+lifecycle APIs, real mobile repository adapters, authenticated family events,
+durable offline Chat retry, exact authenticated notification links, live plan
+draft, poll, time-suggestion and reminder actions, real Today aggregation, and
+the provider-neutral Compass boundary. All 193 Flutter tests and 122 backend
+tests pass. Fresh Android, iOS Simulator, and Web builds also pass.
+
+This does not complete the Prototype 3 exit gate. Production phone sign-in,
+real APNs and FCM delivery, physical-device accessibility, signing, store setup,
+and the 8 to 12 adult, three-family pilot remain external work. The detailed
+split is maintained in `../TODO.md` and
+`PROTOTYPE_3_VALIDATION_CHECKLIST.md`. The staged scope below remains the
+approved plan.
+
 ## 1. The decision in one page
 
 Family Compass should be a family coordination app with two outcomes, in this order:

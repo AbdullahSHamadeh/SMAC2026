@@ -1,17 +1,25 @@
-# family_compass
+# Family Compass Prototype 1
 
-A new Flutter project.
+Prototype 1 is the frozen first exploration of Family Compass.
 
-## Getting Started
+- Flutter package version: `0.1.0+1`
+- Git tag: `prototype-1-v0.1.0`
+- Status: frozen learning artifact
+- Interface: dashboard, Chat, visible Journey concept, AI screen, and reminders
+- Data: deterministic local scenarios
 
-This project is a starting point for a Flutter application.
+This version explored the broad original idea. Prototype 2 later removed the
+visible map and reorganized the product around Today, Chat, private Compass, and
+Together. New product work belongs in `apps/family_compass`, not here.
 
-A few resources to get you started if this is your first Flutter project:
+## Run
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```bash
+flutter pub get
+flutter analyze
+flutter test
+flutter run -d chrome
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+See the repository `README.md`, `VERSIONS.md`, and `TODO.md` for the current
+application and roadmap.

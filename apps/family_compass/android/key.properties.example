@@ -1,0 +1,15 @@
+# Copy this file to key.properties. The real file is gitignored.
+# This example contains references only. Do not add passwords here.
+keyAlias=upload
+storeFile=/absolute/path/to/family-compass-upload.jks
+
+# Local macOS builds resolve these two secrets from Login Keychain.
+storePasswordKeychainService=com.smac.familycompass.android.upload.store-password
+storePasswordKeychainAccount=family-compass-release
+keyPasswordKeychainService=com.smac.familycompass.android.upload.key-password
+keyPasswordKeychainAccount=family-compass-release
+
+# CI can use these variable names instead. Environment values take precedence
+# over Keychain, so this same nonsecret file can also be used by CI if desired.
+storePasswordEnv=FAMILY_COMPASS_ANDROID_STORE_PASSWORD
+keyPasswordEnv=FAMILY_COMPASS_ANDROID_KEY_PASSWORD

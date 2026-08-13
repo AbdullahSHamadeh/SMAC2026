@@ -1,0 +1,378 @@
+{
+  "@@locale": "en",
+  "appName": "Family Compass",
+  "@appName": {
+    "description": "Application name."
+  },
+  "tabToday": "Today",
+  "@tabToday": {
+    "description": "Label for the Today navigation destination."
+  },
+  "tabChat": "Chat",
+  "@tabChat": {
+    "description": "Label for the family Chat navigation destination."
+  },
+  "tabCompass": "Compass",
+  "@tabCompass": {
+    "description": "Label for the private AI Compass navigation destination."
+  },
+  "tabTogether": "Together",
+  "@tabTogether": {
+    "description": "Label for the plans and gatherings navigation destination."
+  },
+  "actionReply": "Reply",
+  "@actionReply": {
+    "description": "Action that opens an item needing a response."
+  },
+  "actionViewPlan": "View plan",
+  "@actionViewPlan": {
+    "description": "Action that opens a family plan."
+  },
+  "actionDismiss": "Dismiss",
+  "@actionDismiss": {
+    "description": "Action that dismisses a suggestion."
+  },
+  "actionCreatePlan": "Create plan",
+  "@actionCreatePlan": {
+    "description": "Action that creates a family plan from a suggestion."
+  },
+  "todayTitle": "Today",
+  "@todayTitle": {
+    "description": "Heading for the Today screen."
+  },
+  "todayGreeting": "Hello, {name}",
+  "@todayGreeting": {
+    "description": "Personal greeting on the Today screen.",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Maya"
+      }
+    }
+  },
+  "todayNextGathering": "Next gathering",
+  "@todayNextGathering": {
+    "description": "Heading for the next confirmed family gathering."
+  },
+  "todayNeedsYourReply": "Needs your reply",
+  "@todayNeedsYourReply": {
+    "description": "Heading for family decisions that need this member's response."
+  },
+  "todaySharedUpdates": "Shared updates",
+  "@todaySharedUpdates": {
+    "description": "Heading for relevant updates family members chose to share."
+  },
+  "todayCompassSuggestion": "Compass suggestion",
+  "@todayCompassSuggestion": {
+    "description": "Heading for the single active AI suggestion."
+  },
+  "todayFamilyDinner": "Family dinner",
+  "@todayFamilyDinner": {
+    "description": "Representative title for a family dinner plan."
+  },
+  "familyMembersCount": "{count, plural, =0{No family members} =1{1 family member} other{{count} family members}}",
+  "@familyMembersCount": {
+    "description": "Accessible count of family members represented in an identity stack.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "todayDinnerDetails": "{day} at {time}",
+  "@todayDinnerDetails": {
+    "description": "Day and time summary for the representative dinner plan.",
+    "placeholders": {
+      "day": {
+        "type": "String",
+        "example": "Friday"
+      },
+      "time": {
+        "type": "String",
+        "example": "7:00 PM"
+      }
+    }
+  },
+  "todayRsvpPrompt": "Can you make it?",
+  "@todayRsvpPrompt": {
+    "description": "Prompt asking a member to respond to a gathering."
+  },
+  "todayNoUrgentUpdates": "Nothing needs your attention right now.",
+  "@todayNoUrgentUpdates": {
+    "description": "Calm empty state when the Today screen has no urgent items."
+  },
+  "pollTitle": "Choose a time",
+  "@pollTitle": {
+    "description": "Heading for a gathering time poll."
+  },
+  "pollDinnerQuestion": "When should we have family dinner?",
+  "@pollDinnerQuestion": {
+    "description": "Representative family dinner poll question."
+  },
+  "pollOptionDayTime": "{day}, {time}",
+  "@pollOptionDayTime": {
+    "description": "A selectable day and time in a poll.",
+    "placeholders": {
+      "day": {
+        "type": "String",
+        "example": "Friday"
+      },
+      "time": {
+        "type": "String",
+        "example": "7:00 PM"
+      }
+    }
+  },
+  "pollGoing": "Going",
+  "@pollGoing": {
+    "description": "RSVP response confirming attendance."
+  },
+  "pollMaybe": "Maybe",
+  "@pollMaybe": {
+    "description": "RSVP response indicating uncertain attendance."
+  },
+  "pollCannotGo": "Cannot go",
+  "@pollCannotGo": {
+    "description": "RSVP response declining attendance."
+  },
+  "pollSuggestAnother": "Suggest another time",
+  "@pollSuggestAnother": {
+    "description": "Action to propose a different gathering time."
+  },
+  "pollDecisionDeadline": "Decide by {deadline}",
+  "@pollDecisionDeadline": {
+    "description": "Deadline for answering a family poll.",
+    "placeholders": {
+      "deadline": {
+        "type": "String",
+        "example": "Thursday at 6:00 PM"
+      }
+    }
+  },
+  "pollResponsesCount": "{count, plural, =0{No responses yet} =1{1 response} other{{count} responses}}",
+  "@pollResponsesCount": {
+    "description": "Number of responses received for a poll.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "compassTitle": "Compass",
+  "@compassTitle": {
+    "description": "Heading for the private AI assistant screen."
+  },
+  "compassPrivateLabel": "Private to you",
+  "@compassPrivateLabel": {
+    "description": "Short privacy label for the private Compass conversation."
+  },
+  "compassPrivateDescription": "Your Compass conversation is private.",
+  "@compassPrivateDescription": {
+    "description": "Explains that private Compass chat is not shown to family members."
+  },
+  "compassInputHint": "Ask about Dad''s shared update",
+  "@compassInputHint": {
+    "description": "Input hint for the private AI assistant."
+  },
+  "compassExampleQuestion": "Where is Dad?",
+  "@compassExampleQuestion": {
+    "description": "Representative question for the private AI assistant."
+  },
+  "compassGroundedAnswer": "Dad shared that he is at work until {time}.",
+  "@compassGroundedAnswer": {
+    "description": "Representative answer grounded in a member-shared status.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "5:30 PM"
+      }
+    }
+  },
+  "compassSourceMemberShared": "Shared by Dad",
+  "@compassSourceMemberShared": {
+    "description": "Source label for information directly shared by Dad."
+  },
+  "compassFreshnessCurrent": "Current",
+  "@compassFreshnessCurrent": {
+    "description": "Freshness label for a current shared update."
+  },
+  "compassFreshnessStale": "May be out of date",
+  "@compassFreshnessStale": {
+    "description": "Freshness label for a stale shared update."
+  },
+  "compassNoRecentUpdate": "No recent update",
+  "@compassNoRecentUpdate": {
+    "description": "Neutral response when no usable family update exists."
+  },
+  "compassCannotInfer": "I do not have a recent update that this person shared with you.",
+  "@compassCannotInfer": {
+    "description": "Privacy-safe explanation when Compass cannot answer."
+  },
+  "compassGatheringSuggestion": "Friday evening looks open for everyone. Plan a family dinner?",
+  "@compassGatheringSuggestion": {
+    "description": "Representative AI suggestion intended to help the family gather."
+  },
+  "compassAnswerVisibility": "Only you can see this answer.",
+  "@compassAnswerVisibility": {
+    "description": "Visibility label for an answer in private Compass chat."
+  },
+  "compassGroupMentionHint": "Use @Compass in family chat for a family-visible answer.",
+  "@compassGroupMentionHint": {
+    "description": "Explains how to ask Compass a question visible to the family group."
+  },
+  "mySharingTitle": "My sharing",
+  "@mySharingTitle": {
+    "description": "Heading for a member's own sharing controls."
+  },
+  "mySharingDescription": "You choose what your family can see and for how long.",
+  "@mySharingDescription": {
+    "description": "Privacy explanation for sharing controls."
+  },
+  "mySharingStatus": "Sharing status",
+  "@mySharingStatus": {
+    "description": "Label for the member's current sharing state."
+  },
+  "mySharingNotSharing": "Not sharing",
+  "@mySharingNotSharing": {
+    "description": "State in which the member is not sharing context."
+  },
+  "mySharingManualCheckIn": "Manual check-in",
+  "@mySharingManualCheckIn": {
+    "description": "Option to share a status manually."
+  },
+  "mySharingEta": "Share an ETA",
+  "@mySharingEta": {
+    "description": "Option to share an estimated arrival time manually."
+  },
+  "mySharingAudience": "Who can see this",
+  "@mySharingAudience": {
+    "description": "Label for choosing the recipients of a shared update."
+  },
+  "mySharingEveryone": "Everyone in the family",
+  "@mySharingEveryone": {
+    "description": "Audience option that includes every family member."
+  },
+  "mySharingSelectedPeople": "Selected people",
+  "@mySharingSelectedPeople": {
+    "description": "Audience option limited to selected family members."
+  },
+  "mySharingExpires": "Expires automatically",
+  "@mySharingExpires": {
+    "description": "Label explaining that a shared update has an expiry."
+  },
+  "mySharingExpiresIn": "Expires in {duration}",
+  "@mySharingExpiresIn": {
+    "description": "Remaining time before a shared update expires.",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "2 hours"
+      }
+    }
+  },
+  "mySharingPause": "Pause sharing",
+  "@mySharingPause": {
+    "description": "Action that temporarily pauses sharing."
+  },
+  "mySharingStop": "Stop sharing",
+  "@mySharingStop": {
+    "description": "Action that ends the current sharing session."
+  },
+  "mySharingPrivateControl": "Only you can change your sharing settings.",
+  "@mySharingPrivateControl": {
+    "description": "Explains that other family members cannot override these controls."
+  },
+  "mySharingNeutralForOthers": "Others will see “No recent update” when you are not sharing.",
+  "@mySharingNeutralForOthers": {
+    "description": "Explains the neutral state shown to other family members."
+  },
+  "shellScenarioPickerHint": "Long press to choose a demonstration state",
+  "shellFamilyAndProfile": "Family",
+  "shellDemoStatesTitle": "Demo states",
+  "shellScenarioDinnerOpportunity": "Dinner opportunity",
+  "shellScenarioDinnerPollOpen": "Dinner poll open",
+  "shellScenarioReassuranceSharedEta": "Reassurance with shared ETA",
+  "shellScenarioReassuranceNoUpdate": "Reassurance with no update",
+  "shellScenarioTodayEmpty": "Empty Today",
+  "shellScenarioOfflineCached": "Offline with cached content",
+  "shellScenarioCompassUnavailable": "Compass unavailable",
+  "shellScenarioSharingPaused": "Sharing paused",
+  "shellScenarioNotificationsDenied": "Notifications denied",
+  "notificationForegroundMessage": "A new family message arrived.",
+  "notificationForegroundPlan": "A family plan was updated.",
+  "notificationForegroundReminder": "A family reminder is ready.",
+  "notificationForegroundCheckIn": "A family check-in needs your attention.",
+  "notificationForegroundUpdate": "A family update arrived.",
+  "notificationOpen": "Open",
+  "familyProfileAccountSummary": "Hamadeh Family · Adult account",
+  "familyMembersTitle": "People",
+  "familyRelationshipSelf": "You",
+  "familyRelationshipMember": "Family member",
+  "familyRelationshipFather": "Father",
+  "familyRelationshipMother": "Mother",
+  "familyRelationshipSister": "Sister",
+  "familyCoordinatorRole": "Coordinator",
+  "familyRemoveMemberTooltip": "Remove {name}",
+  "@familyRemoveMemberTooltip": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "familyInviteByPhone": "Invite by phone number",
+  "familyInvitationPending": "Invitation pending",
+  "familyInvitationExpiry": "{maskedPhone} · expires in 3 days",
+  "@familyInvitationExpiry": {
+    "placeholders": {
+      "maskedPhone": {
+        "type": "String"
+      }
+    }
+  },
+  "actionCancel": "Cancel",
+  "familyLeave": "Leave family",
+  "familyDelete": "Delete family",
+  "settingsTitle": "Your settings",
+  "settingsMySharingDescription": "What you share, with whom, and until when",
+  "settingsDarkAppearance": "Dark appearance",
+  "settingsDarkAppearanceDescription": "Preview the dark appearance",
+  "settingsLanguage": "Language",
+  "settingsLanguageDescription": "Choose the app language.",
+  "settingsPreviewOnboarding": "Preview onboarding",
+  "settingsPrivacyPromise": "Privacy promise",
+  "settingsPrivacyPromiseBody": "There is no permanent family map. Every adult controls their own sharing.",
+  "settingsAboutBuild": "About this build",
+  "settingsDemoBuildDescription": "This build uses demonstration information only. It does not access GPS, contacts, SMS, or a live AI service.",
+  "familyInviteTitle": "Invite to Hamadeh Family",
+  "familyInviteDescription": "Enter a phone number manually. Contacts access is not needed.",
+  "familyPhoneNumberLabel": "Phone number",
+  "familyPhoneNumberHelper": "Include the country code, such as +971.",
+  "familyPhoneNumberInvalid": "Enter a valid international number with 8 to 15 digits.",
+  "familySendInvitation": "Send invitation",
+  "familyInvitationSent": "Invitation sent to {maskedPhone}.",
+  "@familyInvitationSent": {
+    "placeholders": {
+      "maskedPhone": {
+        "type": "String"
+      }
+    }
+  },
+  "familyInvitationCancelled": "Invitation cancelled.",
+  "familyLeaveDialogTitle": "Leave this family?",
+  "familyLeaveDialogBody": "You will lose access to this family’s messages and plans. Other accounts will not be deleted.",
+  "familyLeaveAction": "Leave family",
+  "familyRemoveDialogTitle": "Remove {name}?",
+  "@familyRemoveDialogTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "familyRemoveDialogBody": "Their access to this family will stop immediately.",
+  "familyRemoveAction": "Remove member",
+  "familyDeleteDialogTitle": "Delete this family?",
+  "familyDeleteDialogBody": "Family messages, plans, reminders, and shared statuses will be permanently deleted. Individual accounts will remain.",
+  "familyDeleteAction": "Delete family"
+}
