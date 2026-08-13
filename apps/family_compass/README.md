@@ -78,7 +78,7 @@ Long press the Family Compass title to change the demonstration state. Available
 - The automated suite covers the live gathering flow, explicit invitation choice, exact message, plan and reminder links, private Compass evidence and abstention, selected-recipient sharing, durable offline retry, English and Arabic RTL, light and dark contrast, compact and expanded layouts, 200 percent text, key semantics, and onboarding and Together system Back behavior.
 - The one-time design detector returned `[]`, and the visual and design-slop audit passed after fixes.
 
-The signed Profile build installs and opens on one physical iPhone. The full physical-device flow, real notification delivery, release credentials, assistive-technology checks, and a physical Android test remain open. Android release builds require the gitignored `android/key.properties` and private upload keystore described in the Firebase setup guide.
+The signed Profile build installs and opens on one physical iPhone. Its fictional no-SMS account completed registration, family creation, authenticated events, and initial family-data loading. The two-account flow, real notification delivery, release credentials, assistive-technology checks, and a physical Android test remain open. Android release builds require the gitignored `android/key.properties` and private upload keystore described in the Firebase setup guide.
 
 ## Launcher icon
 

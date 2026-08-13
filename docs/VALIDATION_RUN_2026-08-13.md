@@ -66,6 +66,10 @@ This record separates checks completed locally from production and physical-devi
   project, issuer, token dates, subject, phone provider, and allowlisted phone
   digest without Firebase Admin credentials. Production `firebase` mode still
   uses Firebase Admin and requires revocation checks.
+- The person-operated iPhone flow then completed backend registration and
+  family creation. The installed app loaded the authenticated account, opened
+  the family event connection, and fetched the initial family, member, message,
+  plan, Today, sharing, and Compass collections without sending SMS.
 
 ## Not completed and not claimed
 
@@ -84,8 +88,7 @@ This record separates checks completed locally from production and physical-devi
 - No physical Android phone is available for this run.
 - Real VoiceOver, physical TalkBack, APNs/FCM delivery, locked/background/terminated notification taps, real-radio loss, physical-device logs, and two-device exactly-once behavior remain open.
 - Arabic received an automated catalog and emulator layout pass, not a human translation or pronunciation review.
-- The installed internal iPhone flow still requires the final person-operated
-  onboarding and family-creation walkthrough. A successful token-level check is
-  not recorded as a complete two-person app pilot.
+- This one-account iPhone result is not a substitute for the open two-account
+  invitation test or the multi-person physical-device pilot.
 
 The physical-device and production items above must remain unchecked in `PROTOTYPE_3_VALIDATION_CHECKLIST.md` until they are run on named devices with real project credentials.

@@ -131,7 +131,7 @@ External pilot gate:
 - [x] Verify real Firebase cloud phone authentication and `accounts:lookup` for both fictional accounts without sending SMS.
 - [x] Create the protected Android upload key outside the repository and verify a signed release AAB.
 - [x] Create a free Personal Team Apple Development identity and provisioning profile and install the signed Firebase-enabled Profile app on the connected iPhone.
-- [x] Install and launch a no-SMS internal Profile build on the physical iPhone and verify its one-account Firebase token path against the local backend without embedding the phone number or code.
+- [x] Install and launch a no-SMS internal Profile build on the physical iPhone, complete fictional-account registration and family creation, and verify authenticated event and initial data loading without embedding the phone number or code.
 - [ ] Configure backend Firebase Admin Application Default Credentials, APNs, and FCM delivery.
 - [x] Trust the Developer App profile in iPhone Settings and verify the first launch of the installed app on the physical iPhone.
 - [x] Preserve safe Firebase Phone Authentication reference codes and add a 15-minute client cooldown after `too-many-requests`.

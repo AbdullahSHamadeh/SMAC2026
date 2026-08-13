@@ -13,7 +13,7 @@ Family Compass uses immutable tags for completed prototypes and keeps unfinished
 - Added optional Firebase phone authentication and notification seams while keeping native credentials, signing secrets, fictional test codes, and local databases outside Git.
 - Added a Profile-only no-SMS test path for one allowlisted fictional Firebase account. Production Firebase verification still requires Admin credentials and revocation checking.
 - Added iOS, Android, Firebase, privacy, dependency, validation, design, and physical-pilot documentation.
-- Installed and launched the signed Profile build on one physical iPhone. Production signing, notifications, a physical Android test, accessibility-device checks, and the multi-family pilot remain gated.
+- Installed and launched the signed Profile build on one physical iPhone. Its fictional no-SMS account completed registration, family creation, authenticated events, and initial family-data loading. Production signing, notifications, a physical Android test, accessibility-device checks, and the multi-family pilot remain gated.
 
 This development line is intentionally untagged until the Prototype 3 and Version 1 exit gates pass.
 
