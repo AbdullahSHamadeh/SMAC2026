@@ -55,10 +55,11 @@ class TodayScreen extends StatelessWidget {
             const SizedBox(height: FamilyCompassSpacing.lg),
           ],
           if (!state.aiAvailable) ...[
-            const _CalmBanner(
+            const StatusBanner(
               icon: Icons.auto_awesome_outlined,
               title: 'Compass is taking a break',
               body: 'Chat and family plans still work normally.',
+              tone: StatusBannerTone.privacy,
             ),
             const SizedBox(height: FamilyCompassSpacing.lg),
           ],
@@ -161,61 +162,20 @@ class _OfflineBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Theme.of(context).colorScheme.surfaceContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.cloud_off_outlined),
-            const SizedBox(width: FamilyCompassSpacing.sm),
-            const Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Showing saved family information'),
-                  SizedBox(height: FamilyCompassSpacing.xxs),
-                  Text('Last updated 12 minutes ago'),
-                ],
-              ),
-            ),
-            TextButton(
-              key: const Key('offline.retry'),
-              onPressed:
-                  controller.state.isRetrying ? null : controller.retryOffline,
-              child: controller.state.isRetrying
-                  ? const SizedBox.square(
-                      dimension: 18,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : const Text('Retry'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _CalmBanner extends StatelessWidget {
-  const _CalmBanner({
-    required this.icon,
-    required this.title,
-    required this.body,
-  });
-
-  final IconData icon;
-  final String title;
-  final String body;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Icon(icon),
-        title: Text(title),
-        subtitle: Text(body),
+    return StatusBanner(
+      icon: Icons.cloud_off_outlined,
+      title: 'Showing saved family information',
+      body: 'Last updated 12 minutes ago',
+      tone: StatusBannerTone.warning,
+      action: TextButton(
+        key: const Key('offline.retry'),
+        onPressed: controller.state.isRetrying ? null : controller.retryOffline,
+        child: controller.state.isRetrying
+            ? const SizedBox.square(
+                dimension: 18,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            : const Text('Retry'),
       ),
     );
   }
@@ -231,62 +191,72 @@ class _NextGatheringCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = FamilyCompassSemanticColors.of(context);
-    return Card(
+    return SoftCard(
       color: colors.gatheringContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  backgroundColor: colors.gathering,
-                  foregroundColor: colors.onGathering,
-                  child: const Icon(Icons.dinner_dining_rounded),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconWell(
+                icon: Icons.dinner_dining_rounded,
+                background: colors.gathering,
+                foreground: colors.onGathering,
+                size: 52,
+              ),
+              const SizedBox(width: FamilyCompassSpacing.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.l10n.todayFamilyDinner,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: colors.onGatheringContainer,
+                          ),
+                    ),
+                    const SizedBox(height: FamilyCompassSpacing.xs),
+                    Text(
+                      details,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: colors.onGatheringContainer,
+                          ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: FamilyCompassSpacing.md),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        context.l10n.todayFamilyDinner,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: colors.onGatheringContainer,
-                            ),
-                      ),
-                      const SizedBox(height: FamilyCompassSpacing.xs),
-                      Text(
-                        details,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: colors.onGatheringContainer,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: FamilyCompassSpacing.md),
-            const Wrap(
-              spacing: FamilyCompassSpacing.xs,
-              runSpacing: FamilyCompassSpacing.xs,
-              children: [
-                Chip(label: Text('4 attending')),
-                Chip(label: Text('At home')),
-                Chip(label: Text('Reminder on')),
-              ],
-            ),
-            const SizedBox(height: FamilyCompassSpacing.md),
-            FilledButton.tonalIcon(
-              onPressed: onView,
-              icon: const Icon(Icons.arrow_forward_rounded),
-              label: Text(context.l10n.actionViewPlan),
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          const FamilyAvatarStack(),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          Wrap(
+            spacing: FamilyCompassSpacing.xs,
+            runSpacing: FamilyCompassSpacing.xs,
+            children: [
+              Chip(
+                avatar: Icon(Icons.groups_rounded, color: colors.gathering),
+                label: const Text('4 attending'),
+              ),
+              Chip(
+                avatar: Icon(Icons.home_outlined, color: colors.gathering),
+                label: const Text('At home'),
+              ),
+              Chip(
+                avatar: Icon(Icons.notifications_active_outlined,
+                    color: colors.gathering),
+                label: const Text('Reminder on'),
+              ),
+            ],
+          ),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          FilledButton.tonalIcon(
+            onPressed: onView,
+            icon: const Icon(Icons.arrow_forward_rounded),
+            label: Text(context.l10n.actionViewPlan),
+          ),
+        ],
       ),
     );
   }
@@ -304,30 +274,40 @@ class _NeedsReplyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              context.l10n.todayFamilyDinner,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: FamilyCompassSpacing.xs),
-            Text(context.l10n.todayRsvpPrompt),
-            const SizedBox(height: FamilyCompassSpacing.sm),
-            Text(
-              context.l10n.pollResponsesCount(responseCount),
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            const SizedBox(height: FamilyCompassSpacing.md),
-            FilledButton(
-              onPressed: onReply,
-              child: Text(context.l10n.actionReply),
-            ),
-          ],
-        ),
+    final colors = FamilyCompassSemanticColors.of(context);
+    return SoftCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              IconWell(
+                icon: Icons.how_to_vote_outlined,
+                background: colors.gatheringContainer,
+                foreground: colors.gathering,
+              ),
+              const SizedBox(width: FamilyCompassSpacing.sm),
+              Expanded(
+                child: Text(
+                  context.l10n.todayFamilyDinner,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: FamilyCompassSpacing.sm),
+          Text(context.l10n.todayRsvpPrompt),
+          const SizedBox(height: FamilyCompassSpacing.sm),
+          Text(
+            context.l10n.pollResponsesCount(responseCount),
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          FilledButton(
+            onPressed: onReply,
+            child: Text(context.l10n.actionReply),
+          ),
+        ],
       ),
     );
   }
@@ -351,34 +331,35 @@ class _SharedUpdateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const CircleAvatar(child: Text('D')),
-                const SizedBox(width: FamilyCompassSpacing.sm),
-                Expanded(
-                  child: Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
+    return SoftCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const MemberAvatar(
+                initials: 'D',
+                memberId: 'dad',
+                radius: 22,
+              ),
+              const SizedBox(width: FamilyCompassSpacing.sm),
+              Expanded(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-              ],
-            ),
-            const SizedBox(height: FamilyCompassSpacing.sm),
-            SourceLine(source: source, freshness: freshness),
-            const SizedBox(height: FamilyCompassSpacing.md),
-            TextButton.icon(
-              onPressed: onAskCompass,
-              icon: const Icon(Icons.auto_awesome_rounded),
-              label: Text(action),
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: FamilyCompassSpacing.sm),
+          SourceLine(source: source, freshness: freshness),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          TextButton.icon(
+            onPressed: onAskCompass,
+            icon: const Icon(Icons.auto_awesome_rounded),
+            label: Text(action),
+          ),
+        ],
       ),
     );
   }
@@ -398,41 +379,43 @@ class _SuggestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.auto_awesome_rounded,
-                  color: Theme.of(context).colorScheme.primary,
+    final scheme = Theme.of(context).colorScheme;
+    return SoftCard(
+      color: scheme.primaryContainer,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconWell(
+                icon: Icons.auto_awesome_rounded,
+                background: scheme.primary,
+                foreground: scheme.onPrimary,
+              ),
+              const SizedBox(width: FamilyCompassSpacing.sm),
+              Expanded(
+                child: Text(
+                  context.l10n.compassGatheringSuggestion,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: scheme.onPrimaryContainer,
+                      ),
                 ),
-                const SizedBox(width: FamilyCompassSpacing.sm),
-                Expanded(
-                  child: Text(
-                    context.l10n.compassGatheringSuggestion,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: FamilyCompassSpacing.sm),
-            SourceLine(
-              icon: Icons.forum_outlined,
-              source: source,
-            ),
-            const SizedBox(height: FamilyCompassSpacing.md),
-            FilledButton.icon(
-              onPressed: onOpenChat,
-              icon: const Icon(Icons.chat_bubble_outline_rounded),
-              label: Text(action),
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: FamilyCompassSpacing.sm),
+          SourceLine(
+            icon: Icons.forum_outlined,
+            source: source,
+          ),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          FilledButton.icon(
+            onPressed: onOpenChat,
+            icon: const Icon(Icons.chat_bubble_outline_rounded),
+            label: Text(action),
+          ),
+        ],
       ),
     );
   }

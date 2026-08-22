@@ -35,19 +35,13 @@ class _FamilyMenuScreenState extends State<FamilyMenuScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-                child: Row(
+            SoftCard(
+              child: Row(
                   children: [
-                    CircleAvatar(
+                    const MemberAvatar(
+                      initials: 'AH',
+                      memberId: 'abdullah',
                       radius: 30,
-                      backgroundColor:
-                          Theme.of(context).colorScheme.primaryContainer,
-                      child: Text(
-                        'AH',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
                     ),
                     const SizedBox(width: FamilyCompassSpacing.md),
                     Expanded(
@@ -63,20 +57,21 @@ class _FamilyMenuScreenState extends State<FamilyMenuScreen> {
                       ),
                     ),
                   ],
-                ),
               ),
             ),
             const SizedBox(height: FamilyCompassSpacing.lg),
             const SectionHeading(title: 'Family members'),
-            Card(
+            SoftCard(
+              padding: EdgeInsets.zero,
               child: Column(
                 children: [
                   for (var index = 0;
                       index < familyMembers.length;
                       index++) ...[
                     ListTile(
-                      leading: CircleAvatar(
-                        child: Text(familyMembers[index].initials),
+                      leading: MemberAvatar(
+                        initials: familyMembers[index].initials,
+                        memberId: familyMembers[index].id,
                       ),
                       title: Text(familyMembers[index].name),
                       subtitle: Text(familyMembers[index].relationship),
@@ -99,7 +94,8 @@ class _FamilyMenuScreenState extends State<FamilyMenuScreen> {
             ),
             if (_invitePending) ...[
               const SizedBox(height: FamilyCompassSpacing.sm),
-              Card(
+              SoftCard(
+                padding: EdgeInsets.zero,
                 child: ListTile(
                   leading: const Icon(Icons.schedule_send_outlined),
                   title: const Text('Invitation pending'),
@@ -113,7 +109,8 @@ class _FamilyMenuScreenState extends State<FamilyMenuScreen> {
             ],
             const SizedBox(height: FamilyCompassSpacing.xl),
             const SectionHeading(title: 'Privacy and preferences'),
-            Card(
+            SoftCard(
+              padding: EdgeInsets.zero,
               child: Column(
                 children: [
                   ListTile(
@@ -166,7 +163,8 @@ class _FamilyMenuScreenState extends State<FamilyMenuScreen> {
               ),
             ),
             const SizedBox(height: FamilyCompassSpacing.lg),
-            Card(
+            SoftCard(
+              padding: EdgeInsets.zero,
               child: ListTile(
                 leading: const Icon(Icons.shield_outlined),
                 title: const Text('Privacy promise'),

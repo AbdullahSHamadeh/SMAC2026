@@ -97,8 +97,7 @@ class _CompassScreenState extends State<CompassScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Theme.of(context).scaffoldBackgroundColor,
+    return PageAtmosphere(
       child: SafeArea(
         child: AnimatedBuilder(
           animation: widget.controller,
@@ -220,15 +219,17 @@ class _CompassHeader extends StatelessWidget {
         FamilyCompassSpacing.sm,
       ),
       decoration: BoxDecoration(
-        color: colors.surface,
-        border: Border(bottom: BorderSide(color: colors.outlineVariant)),
+        color: colors.surface.withValues(alpha: 0.78),
+        border: Border(
+          bottom: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.6)),
+        ),
       ),
       child: Row(
         children: <Widget>[
-          CircleAvatar(
-            backgroundColor: colors.secondaryContainer,
-            foregroundColor: colors.onSecondaryContainer,
-            child: const Icon(Icons.auto_awesome_rounded),
+          IconWell(
+            icon: Icons.auto_awesome_rounded,
+            background: colors.secondaryContainer,
+            foreground: colors.onSecondaryContainer,
           ),
           const SizedBox(width: FamilyCompassSpacing.sm),
           Expanded(
@@ -269,23 +270,13 @@ class _CompassOfflineBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return Material(
-      color: colors.tertiaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.sm),
-        child: Row(
-          children: <Widget>[
-            Icon(Icons.cloud_off_outlined, color: colors.onTertiaryContainer),
-            const SizedBox(width: FamilyCompassSpacing.sm),
-            Expanded(
-              child: Text(
-                'Compass needs a connection. Cached family plans remain available.',
-                style: TextStyle(color: colors.onTertiaryContainer),
-              ),
-            ),
-          ],
-        ),
+    return const Padding(
+      padding: EdgeInsets.all(FamilyCompassSpacing.sm),
+      child: StatusBanner(
+        icon: Icons.cloud_off_outlined,
+        title:
+            'Compass needs a connection. Cached family plans remain available.',
+        tone: StatusBannerTone.warning,
       ),
     );
   }
@@ -297,37 +288,39 @@ class _PrivateIntroduction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return Card(
+    return SoftCard(
       color: colors.secondaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Icon(Icons.shield_outlined, color: colors.onSecondaryContainer),
-            const SizedBox(width: FamilyCompassSpacing.sm),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    context.l10n.compassPrivateDescription,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: colors.onSecondaryContainer,
-                        ),
-                  ),
-                  const SizedBox(height: FamilyCompassSpacing.xxs),
-                  Text(
-                    context.l10n.compassGroupMentionHint,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: colors.onSecondaryContainer,
-                        ),
-                  ),
-                ],
-              ),
+      padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          IconWell(
+            icon: Icons.shield_outlined,
+            background: colors.secondary,
+            foreground: colors.onSecondary,
+          ),
+          const SizedBox(width: FamilyCompassSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  context.l10n.compassPrivateDescription,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: colors.onSecondaryContainer,
+                      ),
+                ),
+                const SizedBox(height: FamilyCompassSpacing.xxs),
+                Text(
+                  context.l10n.compassGroupMentionHint,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: colors.onSecondaryContainer,
+                      ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -445,11 +438,10 @@ class _CompassAnswerCard extends StatelessWidget {
     final canDraftReminder = state.aiAvailable &&
         state.plan?.phase == PlanPhase.confirmed &&
         state.separateReminderState == SeparateReminderState.none;
-    return Card(
+    return SoftCard(
       key: const ValueKey('compass.answer'),
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Column(
+      padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+      child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
@@ -580,7 +572,6 @@ class _CompassAnswerCard extends StatelessWidget {
               ),
             ],
           ],
-        ),
       ),
     );
   }
@@ -682,12 +673,11 @@ class _PlanChangeDraftCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return Card(
+    return SoftCard(
       key: const ValueKey('compass.planChange.draftCard'),
       color: colors.secondaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Column(
+      padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+      child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
@@ -715,7 +705,6 @@ class _PlanChangeDraftCard extends StatelessWidget {
               child: const Text('Confirm change'),
             ),
           ],
-        ),
       ),
     );
   }
@@ -729,12 +718,11 @@ class _ManualReminderDraftCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return Card(
+    return SoftCard(
       key: const ValueKey('compass.reminder.draft'),
       color: colors.secondaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Column(
+      padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+      child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
@@ -763,7 +751,6 @@ class _ManualReminderDraftCard extends StatelessWidget {
               label: const Text('Confirm reminder'),
             ),
           ],
-        ),
       ),
     );
   }
@@ -784,33 +771,35 @@ class _ConfirmationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return Card(
+    return SoftCard(
       color: colors.primaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Icon(icon, color: colors.onPrimaryContainer),
-            const SizedBox(width: FamilyCompassSpacing.sm),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: colors.onPrimaryContainer,
-                        ),
-                  ),
-                  const SizedBox(height: FamilyCompassSpacing.xxs),
-                  Text(body,
-                      style: TextStyle(color: colors.onPrimaryContainer)),
-                ],
-              ),
+      padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          IconWell(
+            icon: icon,
+            background: colors.primary,
+            foreground: colors.onPrimary,
+          ),
+          const SizedBox(width: FamilyCompassSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: colors.onPrimaryContainer,
+                      ),
+                ),
+                const SizedBox(height: FamilyCompassSpacing.xxs),
+                Text(body,
+                    style: TextStyle(color: colors.onPrimaryContainer)),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -834,13 +823,14 @@ class _CompassComposer extends StatelessWidget {
       color: colors.surface,
       child: Container(
         padding: const EdgeInsetsDirectional.fromSTEB(
+          FamilyCompassSpacing.md,
           FamilyCompassSpacing.sm,
-          FamilyCompassSpacing.xs,
-          FamilyCompassSpacing.sm,
-          FamilyCompassSpacing.sm,
+          FamilyCompassSpacing.md,
+          FamilyCompassSpacing.md,
         ),
         decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: colors.outlineVariant)),
+          color: colors.surface,
+          boxShadow: FamilyCompassSemanticColors.of(context).barShadows,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,

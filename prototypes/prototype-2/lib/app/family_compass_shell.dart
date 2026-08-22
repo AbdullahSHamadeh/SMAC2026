@@ -37,6 +37,7 @@ class FamilyCompassShell extends StatelessWidget {
             final useBottomNavigation = compactHeight ||
                 constraints.maxWidth < FamilyCompassBreakpoints.compactWidth;
             final destinations = _destinations(context);
+            final colors = FamilyCompassSemanticColors.of(context);
             final content = IndexedStack(
               index: selected,
               children: [
@@ -62,99 +63,116 @@ class FamilyCompassShell extends StatelessWidget {
               ],
             );
 
-            return Scaffold(
-              appBar: AppBar(
-                toolbarHeight: compactHeight ? 56 : 68,
-                titleSpacing: FamilyCompassSpacing.md,
-                title: Semantics(
-                  button: true,
-                  hint: 'Long press to choose a prototype scenario',
-                  child: GestureDetector(
-                    onLongPress: () => _showScenarioPicker(context),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 36,
-                          height: 36,
-                          decoration: BoxDecoration(
-                            color:
-                                Theme.of(context).colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(12),
+            return PageAtmosphere(
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                appBar: AppBar(
+                  toolbarHeight: compactHeight ? 56 : 72,
+                  titleSpacing: FamilyCompassSpacing.md,
+                  title: Semantics(
+                    button: true,
+                    hint: 'Long press to choose a prototype scenario',
+                    child: GestureDetector(
+                      onLongPress: () => _showScenarioPicker(context),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          BrandMark(size: compactHeight ? 34 : 40),
+                          const SizedBox(width: FamilyCompassSpacing.sm),
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  context.l10n.appName,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                if (!compactHeight)
+                                  Text(
+                                    'Hamadeh Family',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall
+                                        ?.copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurfaceVariant,
+                                        ),
+                                  ),
+                              ],
+                            ),
                           ),
-                          child: Icon(
-                            Icons.explore_rounded,
+                        ],
+                      ),
+                    ),
+                  ),
+                  actions: [
+                    IconButton(
+                      key: const Key('family.menu'),
+                      tooltip: 'Family and profile',
+                      onPressed: () => _openFamilyMenu(context),
+                      icon: const MemberAvatar(
+                        initials: 'AH',
+                        memberId: 'abdullah',
+                        radius: 18,
+                      ),
+                    ),
+                    const SizedBox(width: FamilyCompassSpacing.xs),
+                  ],
+                ),
+                body: useBottomNavigation
+                    ? content
+                    : Row(
+                        children: [
+                          NavigationRail(
+                            selectedIndex: selected,
+                            onDestinationSelected: controller.selectTab,
+                            labelType: NavigationRailLabelType.all,
+                            destinations: [
+                              for (final destination in destinations)
+                                NavigationRailDestination(
+                                  icon: KeyedSubtree(
+                                    key: destination.key,
+                                    child: Icon(destination.icon),
+                                  ),
+                                  selectedIcon: Icon(destination.selectedIcon),
+                                  label: Text(destination.label),
+                                ),
+                            ],
+                          ),
+                          VerticalDivider(
+                            width: 1,
                             color: Theme.of(context)
                                 .colorScheme
-                                .onPrimaryContainer,
+                                .outlineVariant
+                                .withValues(alpha: 0.6),
                           ),
+                          Expanded(child: content),
+                        ],
+                      ),
+                bottomNavigationBar: useBottomNavigation
+                    ? DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surface,
+                          boxShadow: colors.barShadows,
                         ),
-                        const SizedBox(width: FamilyCompassSpacing.sm),
-                        Flexible(
-                          child: Text(
-                            context.l10n.appName,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                actions: [
-                  IconButton(
-                    key: const Key('family.menu'),
-                    tooltip: 'Family and profile',
-                    onPressed: () => _openFamilyMenu(context),
-                    icon: const CircleAvatar(
-                      radius: 18,
-                      child: Text('AH'),
-                    ),
-                  ),
-                  const SizedBox(width: FamilyCompassSpacing.xs),
-                ],
-              ),
-              body: useBottomNavigation
-                  ? content
-                  : Row(
-                      children: [
-                        NavigationRail(
+                        child: NavigationBar(
                           selectedIndex: selected,
                           onDestinationSelected: controller.selectTab,
-                          labelType: NavigationRailLabelType.all,
                           destinations: [
                             for (final destination in destinations)
-                              NavigationRailDestination(
-                                icon: KeyedSubtree(
-                                  key: destination.key,
-                                  child: Icon(destination.icon),
-                                ),
+                              NavigationDestination(
+                                key: destination.key,
+                                icon: Icon(destination.icon),
                                 selectedIcon: Icon(destination.selectedIcon),
-                                label: Text(destination.label),
+                                label: destination.label,
                               ),
                           ],
                         ),
-                        VerticalDivider(
-                          width: 1,
-                          color: Theme.of(context).colorScheme.outlineVariant,
-                        ),
-                        Expanded(child: content),
-                      ],
-                    ),
-              bottomNavigationBar: useBottomNavigation
-                  ? NavigationBar(
-                      selectedIndex: selected,
-                      onDestinationSelected: controller.selectTab,
-                      destinations: [
-                        for (final destination in destinations)
-                          NavigationDestination(
-                            key: destination.key,
-                            icon: Icon(destination.icon),
-                            selectedIcon: Icon(destination.selectedIcon),
-                            label: destination.label,
-                          ),
-                      ],
-                    )
-                  : null,
+                      )
+                    : null,
+              ),
             );
           },
         );
@@ -166,8 +184,8 @@ class FamilyCompassShell extends StatelessWidget {
         _ShellDestination(
           key: const Key('nav.today'),
           label: context.l10n.tabToday,
-          icon: Icons.today_outlined,
-          selectedIcon: Icons.today_rounded,
+          icon: Icons.wb_sunny_outlined,
+          selectedIcon: Icons.wb_sunny_rounded,
         ),
         _ShellDestination(
           key: const Key('nav.chat'),
@@ -221,16 +239,36 @@ class FamilyCompassShell extends StatelessWidget {
                 'Prototype scenarios',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              const SizedBox(height: FamilyCompassSpacing.sm),
+              const SizedBox(height: FamilyCompassSpacing.xs),
+              Text(
+                'Long-press the wordmark any time to switch a prepared family story.',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
+              const SizedBox(height: FamilyCompassSpacing.md),
               for (final scenario in PrototypeScenario.values)
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: Icon(_scenarioIcon(scenario)),
-                  title: Text(_scenarioLabel(scenario)),
-                  trailing: scenario == controller.state.scenario
-                      ? const Icon(Icons.check_rounded)
-                      : null,
-                  onTap: () => Navigator.pop(context, scenario),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: FamilyCompassSpacing.xs,
+                  ),
+                  child: SoftCard(
+                    padding: EdgeInsets.zero,
+                    onTap: () => Navigator.pop(context, scenario),
+                    child: ListTile(
+                      leading: IconWell(
+                        icon: _scenarioIcon(scenario),
+                        size: 40,
+                      ),
+                      title: Text(_scenarioLabel(scenario)),
+                      trailing: scenario == controller.state.scenario
+                          ? Icon(
+                              Icons.check_circle_rounded,
+                              color: Theme.of(context).colorScheme.primary,
+                            )
+                          : null,
+                    ),
+                  ),
                 ),
             ],
           ),
