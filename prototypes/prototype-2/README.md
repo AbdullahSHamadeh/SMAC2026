@@ -1,6 +1,6 @@
 # Family Compass Prototype 2
 
-Prototype 2 is the current consent-first Flutter experience prototype.
+Prototype 2 is the frozen consent-first Flutter experience prototype that preceded the active Version 1 foundation.
 
 - Flutter package version: `0.2.0+2`
 - Git tag: `prototype-2-v0.2.0`

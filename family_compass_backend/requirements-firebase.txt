@@ -1,0 +1,5 @@
+-r requirements.txt
+firebase-admin>=7.5,<8
+google-auth>=2.56,<3
+requests>=2.34,<3
+CacheControl>=0.14,<0.15

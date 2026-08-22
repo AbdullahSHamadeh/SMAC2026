@@ -1,0 +1,4 @@
+[lint.per-file-ignores]
+# FastAPI resolves these callable defaults through its dependency-injection
+# system. This is the framework's documented route-declaration pattern.
+"app/main.py" = ["B008"]

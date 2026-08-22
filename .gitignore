@@ -18,6 +18,10 @@ __pycache__/
 .pytest_cache/
 .venv/
 venv/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
 
 # Environment and secrets
 .env
@@ -25,6 +29,21 @@ venv/
 !.env.example
 *.pem
 *.key
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.ipa
+*.apk
+*.aab
+*.xcarchive
+**/google-services.json
+**/GoogleService-Info.plist
+**/*firebase-admin*.json
+**/*service-account*.json
+**/key.properties
+**/*.jks
+**/*.keystore
 
 # JavaScript tooling
 node_modules/
@@ -35,3 +54,9 @@ out/
 # Local work and generated output
 work/
 outputs/
+firebase-debug.log
+.firebase/
+.impeccable/
+DerivedData/
+**/build.metadata-backup-*/
+**/README 2.md

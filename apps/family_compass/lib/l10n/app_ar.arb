@@ -1,0 +1,212 @@
+{
+  "@@locale": "ar",
+  "appName": "بوصلة العائلة",
+  "tabToday": "اليوم",
+  "tabChat": "الدردشة",
+  "tabCompass": "البوصلة",
+  "tabTogether": "معًا",
+  "actionReply": "رد",
+  "actionViewPlan": "عرض الخطة",
+  "actionDismiss": "تجاهل",
+  "actionCreatePlan": "إنشاء خطة",
+  "todayTitle": "اليوم",
+  "todayGreeting": "أهلًا، {name}",
+  "todayNextGathering": "التجمع القادم",
+  "todayNeedsYourReply": "ينتظر ردك",
+  "todaySharedUpdates": "التحديثات المشتركة",
+  "todayCompassSuggestion": "اقتراح البوصلة",
+  "todayFamilyDinner": "عشاء عائلي",
+  "familyMembersCount": "{count, plural, =0{لا يوجد أفراد من العائلة} =1{فرد واحد من العائلة} =2{فردان من العائلة} few{{count} أفراد من العائلة} many{{count} فردًا من العائلة} other{{count} فرد من العائلة}}",
+  "todayDinnerDetails": "{day}، الساعة {time}",
+  "todayRsvpPrompt": "هل يمكنك الحضور؟",
+  "todayNoUrgentUpdates": "لا يوجد ما يحتاج إلى انتباهك الآن.",
+  "pollTitle": "اختيار الوقت",
+  "pollDinnerQuestion": "متى يناسبنا العشاء العائلي؟",
+  "pollOptionDayTime": "{day}، {time}",
+  "pollGoing": "سأحضر",
+  "pollMaybe": "ربما",
+  "pollCannotGo": "لا أستطيع الحضور",
+  "pollSuggestAnother": "اقتراح وقت آخر",
+  "pollDecisionDeadline": "يرجى الرد قبل {deadline}",
+  "pollResponsesCount": "{count, plural, =0{لا توجد ردود بعد} =1{رد واحد} =2{ردان} few{{count} ردود} many{{count} ردًا} other{{count} رد}}",
+  "compassTitle": "البوصلة",
+  "compassPrivateLabel": "خاص بك",
+  "compassPrivateDescription": "محادثتك مع البوصلة خاصة بك.",
+  "compassInputHint": "اسأل عن التحديث الذي شاركه الأب",
+  "compassExampleQuestion": "أين أبي؟",
+  "compassGroundedAnswer": "شارك الأب أنه في العمل حتى الساعة {time}.",
+  "compassSourceMemberShared": "مشاركة من الأب",
+  "compassFreshnessCurrent": "محدّث",
+  "compassFreshnessStale": "قد لا يكون محدّثًا",
+  "compassNoRecentUpdate": "لا يوجد تحديث حديث",
+  "compassCannotInfer": "لا يوجد لدي تحديث حديث شاركه هذا الشخص معك.",
+  "compassGatheringSuggestion": "مساء الجمعة يبدو مناسبًا للجميع. هل نخطط لعشاء عائلي؟",
+  "compassAnswerVisibility": "هذه الإجابة ظاهرة لك وحدك.",
+  "compassGroupMentionHint": "استخدم @Compass في دردشة العائلة للحصول على إجابة يراها الجميع.",
+  "mySharingTitle": "مشاركتي",
+  "mySharingDescription": "أنت تختار ما يمكن لعائلتك رؤيته والمدة التي يبقى فيها متاحًا.",
+  "mySharingStatus": "حالة المشاركة",
+  "mySharingNotSharing": "لا توجد مشاركة الآن",
+  "mySharingManualCheckIn": "تحديث يدوي",
+  "mySharingEta": "مشاركة وقت الوصول المتوقع",
+  "mySharingAudience": "من يمكنه رؤية هذا",
+  "mySharingEveryone": "جميع أفراد العائلة",
+  "mySharingSelectedPeople": "أشخاص محددون",
+  "mySharingExpires": "تنتهي المشاركة تلقائيًا",
+  "mySharingExpiresIn": "تنتهي بعد {duration}",
+  "mySharingPause": "إيقاف المشاركة مؤقتًا",
+  "mySharingStop": "إنهاء المشاركة",
+  "mySharingPrivateControl": "أنت وحدك من يمكنه تغيير إعدادات المشاركة الخاصة بك.",
+  "mySharingNeutralForOthers": "سيظهر للآخرين “لا يوجد تحديث حديث” عندما لا تكون مشاركًا.",
+  "shellScenarioPickerHint": "اضغط مطولًا لاختيار حالة تجريبية",
+  "shellFamilyAndProfile": "العائلة",
+  "shellDemoStatesTitle": "الحالات التجريبية",
+  "shellScenarioDinnerOpportunity": "فرصة لعشاء عائلي",
+  "shellScenarioDinnerPollOpen": "تصويت مفتوح على موعد العشاء",
+  "shellScenarioReassuranceSharedEta": "طمأنة مع وقت وصول مشترك",
+  "shellScenarioReassuranceNoUpdate": "طمأنة من دون تحديث",
+  "shellScenarioTodayEmpty": "صفحة اليوم فارغة",
+  "shellScenarioOfflineCached": "دون اتصال مع محتوى محفوظ",
+  "shellScenarioCompassUnavailable": "البوصلة غير متاحة",
+  "shellScenarioSharingPaused": "المشاركة متوقفة مؤقتًا",
+  "shellScenarioNotificationsDenied": "الإشعارات غير مسموح بها",
+  "notificationForegroundMessage": "وصلت رسالة عائلية جديدة.",
+  "notificationForegroundPlan": "تم تحديث إحدى خطط العائلة.",
+  "notificationForegroundReminder": "هناك تذكير عائلي جاهز.",
+  "notificationForegroundCheckIn": "هناك طلب اطمئنان عائلي يحتاج إلى انتباهك.",
+  "notificationForegroundUpdate": "هناك تحديث عائلي جديد.",
+  "notificationOpen": "فتح",
+  "familyProfileAccountSummary": "عائلة حمادة · حساب بالغ",
+  "familyMembersTitle": "الأفراد",
+  "familyRelationshipSelf": "أنت",
+  "familyRelationshipMember": "فرد من العائلة",
+  "familyRelationshipFather": "الأب",
+  "familyRelationshipMother": "الأم",
+  "familyRelationshipSister": "الأخت",
+  "familyCoordinatorRole": "المنسق",
+  "familyRemoveMemberTooltip": "إزالة {name}",
+  "familyInviteByPhone": "دعوة برقم الهاتف",
+  "familyInvitationPending": "دعوة معلقة",
+  "familyInvitationExpiry": "{maskedPhone} · تنتهي خلال 3 أيام",
+  "actionCancel": "إلغاء",
+  "familyLeave": "مغادرة العائلة",
+  "familyDelete": "حذف العائلة",
+  "settingsTitle": "إعداداتك",
+  "settingsMySharingDescription": "ما تشاركه ومع من وإلى متى",
+  "settingsDarkAppearance": "المظهر الداكن",
+  "settingsDarkAppearanceDescription": "معاينة المظهر الداكن",
+  "settingsLanguage": "اللغة",
+  "settingsLanguageDescription": "اختر لغة التطبيق.",
+  "settingsPreviewOnboarding": "معاينة خطوات البدء",
+  "settingsPrivacyPromise": "وعد الخصوصية",
+  "settingsPrivacyPromiseBody": "لا توجد خريطة عائلية دائمة. يتحكم كل بالغ في مشاركته.",
+  "settingsAboutBuild": "حول التطبيق",
+  "settingsDemoBuildDescription": "تستخدم هذه النسخة معلومات تجريبية فقط. لا تصل إلى GPS أو جهات الاتصال أو الرسائل النصية أو خدمة ذكاء اصطناعي مباشرة.",
+  "familyInviteTitle": "دعوة إلى عائلة حمادة",
+  "familyInviteDescription": "أدخل رقم الهاتف يدويًا. لا يلزم الوصول إلى جهات الاتصال.",
+  "familyPhoneNumberLabel": "رقم الهاتف",
+  "familyPhoneNumberHelper": "أدخل رمز الدولة، مثل +971.",
+  "familyPhoneNumberInvalid": "أدخل رقمًا دوليًا صحيحًا من 8 إلى 15 رقمًا.",
+  "familySendInvitation": "إرسال الدعوة",
+  "familyInvitationSent": "تم إرسال الدعوة إلى {maskedPhone}.",
+  "familyInvitationCancelled": "تم إلغاء الدعوة.",
+  "familyLeaveDialogTitle": "مغادرة العائلة؟",
+  "familyLeaveDialogBody": "ستفقد الوصول إلى رسائل وخطط هذه العائلة. لن تُحذف حسابات الآخرين.",
+  "familyLeaveAction": "مغادرة",
+  "familyRemoveDialogTitle": "إزالة {name}؟",
+  "familyRemoveDialogBody": "سيتوقف وصول هذا الشخص إلى محتوى العائلة فورًا.",
+  "familyRemoveAction": "إزالة",
+  "familyDeleteDialogTitle": "حذف العائلة نهائيًا؟",
+  "familyDeleteDialogBody": "سيتم حذف رسائل العائلة وخططها وتذكيراتها وحالاتها المشتركة. ستبقى حسابات الأشخاص منفصلة.",
+  "familyDeleteAction": "حذف العائلة",
+  "@todayGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@todayDinnerDetails": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@familyMembersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@pollOptionDayTime": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@pollDecisionDeadline": {
+    "placeholders": {
+      "deadline": {
+        "type": "String"
+      }
+    }
+  },
+  "@pollResponsesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@compassGroundedAnswer": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mySharingExpiresIn": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "@familyRemoveMemberTooltip": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@familyInvitationExpiry": {
+    "placeholders": {
+      "maskedPhone": {
+        "type": "String"
+      }
+    }
+  },
+  "@familyInvitationSent": {
+    "placeholders": {
+      "maskedPhone": {
+        "type": "String"
+      }
+    }
+  },
+  "@familyRemoveDialogTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+}
