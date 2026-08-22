@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// Shared spacing, shape, and sizing constants.
 abstract final class FamilyCompassSpacing {
   static const xxs = 4.0;
