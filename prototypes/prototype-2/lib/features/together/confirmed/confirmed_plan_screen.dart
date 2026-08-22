@@ -32,8 +32,7 @@ class ConfirmedPlanScreen extends StatelessWidget {
     final reminderAdjusted = automaticReminder?.at.hour == 18;
     final dessertAdded = plan.contributions.any((item) => item.id == 'dessert');
 
-    return ColoredBox(
-      color: semantic.pageBackground,
+    return PageAtmosphere(
       child: SafeArea(
         child: CustomScrollView(
           key: const PageStorageKey<String>('confirmed-plan-scroll'),
@@ -55,13 +54,11 @@ class ConfirmedPlanScreen extends StatelessWidget {
                     onBack: onBack,
                   ),
                   const SizedBox(height: FamilyCompassSpacing.lg),
-                  Card(
+                  SoftCard(
                     color: completed
                         ? semantic.successContainer
                         : semantic.gatheringContainer,
-                    child: Padding(
-                      padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-                      child: Column(
+                    child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
@@ -90,7 +87,6 @@ class ConfirmedPlanScreen extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
                     ),
                   ),
                   if (completed) ...[

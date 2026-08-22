@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'family_compass_palette.dart';
+import 'family_compass_spacing.dart';
 
 /// Product-specific semantic colors that are not represented by ColorScheme.
 ///
@@ -10,6 +11,7 @@ class FamilyCompassSemanticColors
     extends ThemeExtension<FamilyCompassSemanticColors> {
   const FamilyCompassSemanticColors({
     required this.pageBackground,
+    required this.atmosphere,
     required this.gathering,
     required this.onGathering,
     required this.gatheringContainer,
@@ -25,10 +27,17 @@ class FamilyCompassSemanticColors
     required this.secondaryText,
     required this.stale,
     required this.privacy,
+    required this.cardShadows,
+    required this.barShadows,
+    required this.avatarTeal,
+    required this.avatarClay,
+    required this.avatarSage,
+    required this.avatarPlum,
   });
 
   static const light = FamilyCompassSemanticColors(
     pageBackground: FamilyCompassPalette.lightBackground,
+    atmosphere: FamilyCompassPalette.lightAtmosphere,
     gathering: FamilyCompassPalette.lightGathering,
     onGathering: FamilyCompassPalette.lightOnGathering,
     gatheringContainer: FamilyCompassPalette.lightGatheringContainer,
@@ -43,11 +52,18 @@ class FamilyCompassSemanticColors
     onWarningContainer: FamilyCompassPalette.lightOnWarningContainer,
     secondaryText: FamilyCompassPalette.lightSecondaryText,
     stale: FamilyCompassPalette.lightWarning,
-    privacy: FamilyCompassPalette.lightGathering,
+    privacy: FamilyCompassPalette.lightPrimary,
+    cardShadows: FamilyCompassShadows.lightCard,
+    barShadows: FamilyCompassShadows.lightBar,
+    avatarTeal: FamilyCompassPalette.lightAvatarTeal,
+    avatarClay: FamilyCompassPalette.lightAvatarClay,
+    avatarSage: FamilyCompassPalette.lightAvatarSage,
+    avatarPlum: FamilyCompassPalette.lightAvatarPlum,
   );
 
   static const dark = FamilyCompassSemanticColors(
     pageBackground: FamilyCompassPalette.darkBackground,
+    atmosphere: FamilyCompassPalette.darkAtmosphere,
     gathering: FamilyCompassPalette.darkGathering,
     onGathering: FamilyCompassPalette.darkOnGathering,
     gatheringContainer: FamilyCompassPalette.darkGatheringContainer,
@@ -62,10 +78,17 @@ class FamilyCompassSemanticColors
     onWarningContainer: FamilyCompassPalette.darkOnWarningContainer,
     secondaryText: FamilyCompassPalette.darkSecondaryText,
     stale: FamilyCompassPalette.darkWarning,
-    privacy: FamilyCompassPalette.darkGathering,
+    privacy: FamilyCompassPalette.darkPrimary,
+    cardShadows: FamilyCompassShadows.darkCard,
+    barShadows: FamilyCompassShadows.darkBar,
+    avatarTeal: FamilyCompassPalette.darkAvatarTeal,
+    avatarClay: FamilyCompassPalette.darkAvatarClay,
+    avatarSage: FamilyCompassPalette.darkAvatarSage,
+    avatarPlum: FamilyCompassPalette.darkAvatarPlum,
   );
 
   final Color pageBackground;
+  final Color atmosphere;
   final Color gathering;
   final Color onGathering;
   final Color gatheringContainer;
@@ -81,14 +104,31 @@ class FamilyCompassSemanticColors
   final Color secondaryText;
   final Color stale;
   final Color privacy;
+  final List<BoxShadow> cardShadows;
+  final List<BoxShadow> barShadows;
+  final Color avatarTeal;
+  final Color avatarClay;
+  final Color avatarSage;
+  final Color avatarPlum;
 
   static FamilyCompassSemanticColors of(BuildContext context) {
     return Theme.of(context).extension<FamilyCompassSemanticColors>()!;
   }
 
+  Color avatarFor(String? memberId) {
+    return switch (memberId) {
+      'abdullah' => avatarTeal,
+      'dad' => avatarClay,
+      'mom' => avatarSage,
+      'sara' => avatarPlum,
+      _ => avatarTeal,
+    };
+  }
+
   @override
   FamilyCompassSemanticColors copyWith({
     Color? pageBackground,
+    Color? atmosphere,
     Color? gathering,
     Color? onGathering,
     Color? gatheringContainer,
@@ -104,9 +144,16 @@ class FamilyCompassSemanticColors
     Color? secondaryText,
     Color? stale,
     Color? privacy,
+    List<BoxShadow>? cardShadows,
+    List<BoxShadow>? barShadows,
+    Color? avatarTeal,
+    Color? avatarClay,
+    Color? avatarSage,
+    Color? avatarPlum,
   }) {
     return FamilyCompassSemanticColors(
       pageBackground: pageBackground ?? this.pageBackground,
+      atmosphere: atmosphere ?? this.atmosphere,
       gathering: gathering ?? this.gathering,
       onGathering: onGathering ?? this.onGathering,
       gatheringContainer: gatheringContainer ?? this.gatheringContainer,
@@ -122,6 +169,12 @@ class FamilyCompassSemanticColors
       secondaryText: secondaryText ?? this.secondaryText,
       stale: stale ?? this.stale,
       privacy: privacy ?? this.privacy,
+      cardShadows: cardShadows ?? this.cardShadows,
+      barShadows: barShadows ?? this.barShadows,
+      avatarTeal: avatarTeal ?? this.avatarTeal,
+      avatarClay: avatarClay ?? this.avatarClay,
+      avatarSage: avatarSage ?? this.avatarSage,
+      avatarPlum: avatarPlum ?? this.avatarPlum,
     );
   }
 
@@ -133,6 +186,7 @@ class FamilyCompassSemanticColors
     if (other == null) return this;
     return FamilyCompassSemanticColors(
       pageBackground: Color.lerp(pageBackground, other.pageBackground, t)!,
+      atmosphere: Color.lerp(atmosphere, other.atmosphere, t)!,
       gathering: Color.lerp(gathering, other.gathering, t)!,
       onGathering: Color.lerp(onGathering, other.onGathering, t)!,
       gatheringContainer:
@@ -154,6 +208,12 @@ class FamilyCompassSemanticColors
       secondaryText: Color.lerp(secondaryText, other.secondaryText, t)!,
       stale: Color.lerp(stale, other.stale, t)!,
       privacy: Color.lerp(privacy, other.privacy, t)!,
+      cardShadows: t < 0.5 ? cardShadows : other.cardShadows,
+      barShadows: t < 0.5 ? barShadows : other.barShadows,
+      avatarTeal: Color.lerp(avatarTeal, other.avatarTeal, t)!,
+      avatarClay: Color.lerp(avatarClay, other.avatarClay, t)!,
+      avatarSage: Color.lerp(avatarSage, other.avatarSage, t)!,
+      avatarPlum: Color.lerp(avatarPlum, other.avatarPlum, t)!,
     );
   }
 }

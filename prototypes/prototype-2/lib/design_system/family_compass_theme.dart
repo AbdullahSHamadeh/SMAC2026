@@ -28,6 +28,10 @@ abstract final class FamilyCompassTheme {
         onSecondary: FamilyCompassPalette.lightOnGathering,
         secondaryContainer: FamilyCompassPalette.lightGatheringContainer,
         onSecondaryContainer: FamilyCompassPalette.lightOnGatheringContainer,
+        tertiary: FamilyCompassPalette.lightAvatarSage,
+        onTertiary: FamilyCompassPalette.white,
+        tertiaryContainer: FamilyCompassPalette.lightSuccessContainer,
+        onTertiaryContainer: FamilyCompassPalette.lightOnSuccessContainer,
         error: FamilyCompassPalette.lightError,
         onError: FamilyCompassPalette.lightOnError,
         errorContainer: FamilyCompassPalette.lightErrorContainer,
@@ -37,11 +41,12 @@ abstract final class FamilyCompassTheme {
         surfaceContainerLow: FamilyCompassPalette.lightBackground,
         surfaceContainer: FamilyCompassPalette.lightSurfaceRaised,
         surfaceContainerHigh: FamilyCompassPalette.lightSurfaceRaised,
-        surfaceContainerHighest: FamilyCompassPalette.lightSurfaceRaised,
+        surfaceContainerHighest: FamilyCompassPalette.lightPrimaryContainer,
         onSurface: FamilyCompassPalette.lightText,
         onSurfaceVariant: FamilyCompassPalette.lightSecondaryText,
         outline: FamilyCompassPalette.lightOutline,
         outlineVariant: FamilyCompassPalette.lightOutline,
+        shadow: FamilyCompassPalette.lightShadow,
         surfaceTint: Colors.transparent,
       );
 
@@ -57,6 +62,10 @@ abstract final class FamilyCompassTheme {
         onSecondary: FamilyCompassPalette.darkOnGathering,
         secondaryContainer: FamilyCompassPalette.darkGatheringContainer,
         onSecondaryContainer: FamilyCompassPalette.darkOnGatheringContainer,
+        tertiary: FamilyCompassPalette.darkAvatarSage,
+        onTertiary: FamilyCompassPalette.darkOnSuccess,
+        tertiaryContainer: FamilyCompassPalette.darkSuccessContainer,
+        onTertiaryContainer: FamilyCompassPalette.darkOnSuccessContainer,
         error: FamilyCompassPalette.darkError,
         onError: FamilyCompassPalette.darkOnError,
         errorContainer: FamilyCompassPalette.darkErrorContainer,
@@ -66,11 +75,12 @@ abstract final class FamilyCompassTheme {
         surfaceContainerLow: FamilyCompassPalette.darkSurface,
         surfaceContainer: FamilyCompassPalette.darkSurfaceRaised,
         surfaceContainerHigh: FamilyCompassPalette.darkSurfaceRaised,
-        surfaceContainerHighest: FamilyCompassPalette.darkSurfaceRaised,
+        surfaceContainerHighest: FamilyCompassPalette.darkPrimaryContainer,
         onSurface: FamilyCompassPalette.darkText,
         onSurfaceVariant: FamilyCompassPalette.darkSecondaryText,
         outline: FamilyCompassPalette.darkOutline,
         outlineVariant: FamilyCompassPalette.darkOutline,
+        shadow: FamilyCompassPalette.darkShadow,
         surfaceTint: Colors.transparent,
       );
 
@@ -90,13 +100,19 @@ abstract final class FamilyCompassTheme {
     final roundedMedium = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(FamilyCompassRadii.medium),
     );
+    final roundedLarge = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(FamilyCompassRadii.large),
+    );
+    final roundedPill = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(FamilyCompassRadii.pill),
+    );
 
     return seed.copyWith(
       scaffoldBackgroundColor: semanticColors.pageBackground,
       textTheme: textTheme,
       extensions: <ThemeExtension<dynamic>>[semanticColors],
       appBarTheme: AppBarTheme(
-        backgroundColor: semanticColors.pageBackground,
+        backgroundColor: Colors.transparent,
         foregroundColor: colorScheme.onSurface,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
@@ -111,30 +127,49 @@ abstract final class FamilyCompassTheme {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         margin: EdgeInsets.zero,
-        shape: roundedMedium.copyWith(
-          side: BorderSide(color: colorScheme.outlineVariant),
-        ),
+        clipBehavior: Clip.antiAlias,
+        shadowColor: colorScheme.shadow,
+        shape: roundedLarge,
       ),
       dividerTheme: DividerThemeData(
-        color: colorScheme.outlineVariant,
+        color: colorScheme.outlineVariant.withValues(alpha: 0.7),
         thickness: 1,
         space: 1,
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: colorScheme.surface,
+        elevation: 0,
+        height: 76,
         indicatorColor: colorScheme.primaryContainer,
-        height: 72,
-        labelTextStyle: WidgetStatePropertyAll(textTheme.labelMedium),
+        indicatorShape: roundedPill,
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          final base = textTheme.labelMedium;
+          if (states.contains(WidgetState.selected)) {
+            return base?.copyWith(color: colorScheme.primary);
+          }
+          return base?.copyWith(color: colorScheme.onSurfaceVariant);
+        }),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return IconThemeData(color: colorScheme.primary, size: 24);
+          }
+          return IconThemeData(color: colorScheme.onSurfaceVariant, size: 24);
+        }),
       ),
       navigationRailTheme: NavigationRailThemeData(
-        backgroundColor: colorScheme.surface,
+        backgroundColor: colorScheme.surface.withValues(alpha: 0.72),
         indicatorColor: colorScheme.primaryContainer,
+        indicatorShape: roundedPill,
         minWidth: FamilyCompassSizes.navigationRailWidth,
         labelType: NavigationRailLabelType.all,
-        selectedLabelTextStyle: textTheme.labelMedium,
+        selectedLabelTextStyle: textTheme.labelMedium?.copyWith(
+          color: colorScheme.primary,
+        ),
         unselectedLabelTextStyle: textTheme.labelMedium?.copyWith(
           color: colorScheme.onSurfaceVariant,
         ),
+        selectedIconTheme: IconThemeData(color: colorScheme.primary),
+        unselectedIconTheme: IconThemeData(color: colorScheme.onSurfaceVariant),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
@@ -144,7 +179,8 @@ abstract final class FamilyCompassTheme {
             vertical: FamilyCompassSpacing.sm,
           ),
           textStyle: textTheme.labelLarge,
-          shape: roundedMedium,
+          elevation: 0,
+          shape: roundedPill,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -156,7 +192,7 @@ abstract final class FamilyCompassTheme {
           ),
           textStyle: textTheme.labelLarge,
           side: BorderSide(color: colorScheme.outline),
-          shape: roundedMedium,
+          shape: roundedPill,
         ),
       ),
       textButtonTheme: TextButtonThemeData(
@@ -167,8 +203,14 @@ abstract final class FamilyCompassTheme {
             vertical: FamilyCompassSpacing.sm,
           ),
           textStyle: textTheme.labelLarge,
-          shape: roundedMedium,
+          shape: roundedPill,
         ),
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
+        elevation: 0,
+        shape: roundedPill,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -177,27 +219,68 @@ abstract final class FamilyCompassTheme {
           horizontal: FamilyCompassSpacing.md,
           vertical: FamilyCompassSpacing.md,
         ),
+        hintStyle: textTheme.bodyLarge?.copyWith(
+          color: colorScheme.onSurfaceVariant,
+        ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(FamilyCompassRadii.medium),
-          borderSide: BorderSide(color: colorScheme.outline),
+          borderRadius: BorderRadius.circular(FamilyCompassRadii.pill),
+          borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(FamilyCompassRadii.medium),
-          borderSide: BorderSide(color: colorScheme.outline),
+          borderRadius: BorderRadius.circular(FamilyCompassRadii.pill),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(FamilyCompassRadii.medium),
-          borderSide: BorderSide(color: colorScheme.primary, width: 2),
+          borderRadius: BorderRadius.circular(FamilyCompassRadii.pill),
+          borderSide: BorderSide(color: colorScheme.primary, width: 1.5),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(FamilyCompassRadii.pill),
+          borderSide: BorderSide.none,
         ),
       ),
       chipTheme: seed.chipTheme.copyWith(
-        side: BorderSide(color: colorScheme.outlineVariant),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(FamilyCompassRadii.pill),
-        ),
+        backgroundColor: colorScheme.surfaceContainer,
+        selectedColor: colorScheme.primaryContainer,
+        side: BorderSide.none,
+        shape: roundedPill,
         labelStyle: textTheme.labelMedium,
-        padding:
-            const EdgeInsets.symmetric(horizontal: FamilyCompassSpacing.xs),
+        padding: const EdgeInsets.symmetric(
+          horizontal: FamilyCompassSpacing.sm,
+          vertical: FamilyCompassSpacing.xxs,
+        ),
+      ),
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: colorScheme.surface,
+        surfaceTintColor: Colors.transparent,
+        showDragHandle: true,
+        dragHandleColor: colorScheme.outline,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(FamilyCompassRadii.extraLarge),
+          ),
+        ),
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: colorScheme.surface,
+        surfaceTintColor: Colors.transparent,
+        shape: roundedLarge,
+      ),
+      listTileTheme: ListTileThemeData(
+        iconColor: colorScheme.primary,
+        shape: roundedMedium,
+      ),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: colorScheme.primary,
+        linearTrackColor: colorScheme.primaryContainer,
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: colorScheme.onSurface,
+        contentTextStyle: textTheme.bodyMedium?.copyWith(
+          color: colorScheme.surface,
+        ),
+        shape: roundedMedium,
       ),
     );
   }

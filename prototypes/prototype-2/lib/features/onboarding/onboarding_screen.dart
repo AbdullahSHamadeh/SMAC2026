@@ -38,7 +38,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PageAtmosphere(
+      child: Scaffold(
+      backgroundColor: Colors.transparent,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -57,22 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            width: 44,
-                            height: 44,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .primaryContainer,
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: Icon(
-                              Icons.explore_rounded,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onPrimaryContainer,
-                            ),
-                          ),
+                          const BrandMark(size: 44),
                           const SizedBox(width: FamilyCompassSpacing.sm),
                           Text(
                             'Family Compass',
@@ -129,6 +116,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           },
         ),
       ),
+    ),
     );
   }
 
@@ -164,6 +152,7 @@ class _WelcomeStep extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         const SizedBox(height: FamilyCompassSpacing.lg),
+        const SizedBox(height: FamilyCompassSpacing.sm),
         const _PromiseTile(
           icon: Icons.diversity_3_rounded,
           title: 'Gathering comes first',
@@ -201,22 +190,25 @@ class _PromiseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: FamilyCompassSpacing.md),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(child: Icon(icon)),
-          const SizedBox(width: FamilyCompassSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: Theme.of(context).textTheme.titleMedium),
-                const SizedBox(height: FamilyCompassSpacing.xxs),
-                Text(body),
-              ],
+      child: SoftCard(
+        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IconWell(icon: icon),
+            const SizedBox(width: FamilyCompassSpacing.md),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: Theme.of(context).textTheme.titleMedium),
+                  const SizedBox(height: FamilyCompassSpacing.xxs),
+                  Text(body),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -306,10 +298,8 @@ class _FamilyChoiceStepState extends State<_FamilyChoiceStep> {
           },
         ),
         const SizedBox(height: FamilyCompassSpacing.lg),
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-            child: _create
+        SoftCard(
+          child: _create
                 ? const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -337,7 +327,6 @@ class _FamilyChoiceStepState extends State<_FamilyChoiceStep> {
                       ),
                     ],
                   ),
-          ),
         ),
       ],
     );

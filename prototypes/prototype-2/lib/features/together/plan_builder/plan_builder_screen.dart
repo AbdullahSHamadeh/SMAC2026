@@ -34,8 +34,7 @@ class PlanBuilderScreen extends StatelessWidget {
     final semantic = FamilyCompassSemanticColors.of(context);
     final textTheme = FamilyCompassTypography.of(context);
 
-    return ColoredBox(
-      color: semantic.pageBackground,
+    return PageAtmosphere(
       child: SafeArea(
         child: CustomScrollView(
           key: const PageStorageKey<String>('plan-builder-scroll'),
@@ -190,11 +189,10 @@ class _IdeaStep extends StatelessWidget {
       children: [
         Text('What should you do together?', style: textTheme.titleLarge),
         const SizedBox(height: FamilyCompassSpacing.sm),
-        Card(
+        SoftCard(
           color: semantic.gatheringContainer,
-          child: Padding(
-            padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-            child: Row(
+          padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+          child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Icon(Icons.restaurant_rounded, color: semantic.gathering),
@@ -216,7 +214,6 @@ class _IdeaStep extends StatelessWidget {
                 ),
               ],
             ),
-          ),
         ),
         const SizedBox(height: FamilyCompassSpacing.md),
         Text('Other ideas', style: textTheme.titleSmall),
@@ -324,9 +321,9 @@ class _ParticipantsStep extends StatelessWidget {
                   key: ValueKey<String>(
                     'participant-${plan.participantIds[index]}',
                   ),
-                  leading: CircleAvatar(
-                    child:
-                        Text(memberById(plan.participantIds[index]).initials),
+                  leading: MemberAvatar(
+                    initials: memberById(plan.participantIds[index]).initials,
+                    memberId: plan.participantIds[index],
                   ),
                   title: Text(memberById(plan.participantIds[index]).name),
                   subtitle: Text(

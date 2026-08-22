@@ -30,19 +30,22 @@ class MySharingScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const SizedBox(height: FamilyCompassSpacing.lg),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-                    child: Column(
+                SoftCard(
+                  child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Icon(
-                              isActive
+                            IconWell(
+                              icon: isActive
                                   ? Icons.check_circle_rounded
                                   : Icons.pause_circle_rounded,
-                              color: isActive
+                              background: isActive
+                                  ? FamilyCompassSemanticColors.of(context)
+                                      .successContainer
+                                  : FamilyCompassSemanticColors.of(context)
+                                      .warningContainer,
+                              foreground: isActive
                                   ? FamilyCompassSemanticColors.of(context)
                                       .success
                                   : FamilyCompassSemanticColors.of(context)
@@ -90,7 +93,6 @@ class MySharingScreen extends StatelessWidget {
                           ),
                         ],
                       ],
-                    ),
                   ),
                 ),
                 const SizedBox(height: FamilyCompassSpacing.lg),
@@ -127,21 +129,19 @@ class MySharingScreen extends StatelessWidget {
                   ),
                 ],
                 const SizedBox(height: FamilyCompassSpacing.lg),
-                Card(
+                SoftCard(
                   color: Theme.of(context).colorScheme.surfaceContainer,
-                  child: Padding(
-                    padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          context.l10n.mySharingPrivateControl,
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        const SizedBox(height: FamilyCompassSpacing.xs),
-                        Text(context.l10n.mySharingNeutralForOthers),
-                      ],
-                    ),
+                  padding: const EdgeInsets.all(FamilyCompassSpacing.md),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        context.l10n.mySharingPrivateControl,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      const SizedBox(height: FamilyCompassSpacing.xs),
+                      Text(context.l10n.mySharingNeutralForOthers),
+                    ],
                   ),
                 ),
               ],

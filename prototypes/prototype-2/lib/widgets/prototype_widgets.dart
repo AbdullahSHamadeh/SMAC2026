@@ -16,31 +16,33 @@ class PrototypePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final horizontal = constraints.maxWidth < 600
-            ? FamilyCompassSizes.compactContentPadding
-            : FamilyCompassSizes.mediumContentPadding;
-        return Align(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: FamilyCompassSizes.maximumContentWidth,
+    return PageAtmosphere(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final horizontal = constraints.maxWidth < 600
+              ? FamilyCompassSizes.compactContentPadding
+              : FamilyCompassSizes.mediumContentPadding;
+          return Align(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: FamilyCompassSizes.maximumContentWidth,
+              ),
+              child: SingleChildScrollView(
+                controller: scrollController,
+                padding: padding ??
+                    EdgeInsets.fromLTRB(
+                      horizontal,
+                      FamilyCompassSpacing.lg,
+                      horizontal,
+                      FamilyCompassSpacing.xxl,
+                    ),
+                child: child,
+              ),
             ),
-            child: SingleChildScrollView(
-              controller: scrollController,
-              padding: padding ??
-                  EdgeInsets.fromLTRB(
-                    horizontal,
-                    FamilyCompassSpacing.lg,
-                    horizontal,
-                    FamilyCompassSpacing.xxl,
-                  ),
-              child: child,
-            ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
@@ -53,20 +55,7 @@ class SectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: FamilyCompassSpacing.sm),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ),
-          if (action != null) action!,
-        ],
-      ),
-    );
+    return SectionEyebrow(title: title, action: action);
   }
 }
 
@@ -84,18 +73,9 @@ class SourceLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.onSurfaceVariant;
-    return Wrap(
-      crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: FamilyCompassSpacing.xs,
-      runSpacing: FamilyCompassSpacing.xxs,
-      children: [
-        Icon(icon, size: 16, color: color),
-        Text(
-          freshness == null ? source : '$source · $freshness',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(color: color),
-        ),
-      ],
+    return QuietLabel(
+      icon: icon,
+      text: freshness == null ? source : '$source · $freshness',
     );
   }
 }
@@ -116,20 +96,21 @@ class EmptyStateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.lg),
-        child: Column(
-          children: [
-            Icon(icon, size: 42, color: Theme.of(context).colorScheme.primary),
-            const SizedBox(height: FamilyCompassSpacing.md),
-            Text(title, style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: FamilyCompassSpacing.xs),
-            Text(body, textAlign: TextAlign.center),
-            const SizedBox(height: FamilyCompassSpacing.lg),
-            action,
-          ],
-        ),
+    return SoftCard(
+      child: Column(
+        children: [
+          IconWell(icon: icon, size: 56),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleLarge,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: FamilyCompassSpacing.xs),
+          Text(body, textAlign: TextAlign.center),
+          const SizedBox(height: FamilyCompassSpacing.lg),
+          action,
+        ],
       ),
     );
   }

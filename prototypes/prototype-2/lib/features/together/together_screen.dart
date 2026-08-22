@@ -198,10 +198,8 @@ class _TogetherOverview extends StatelessWidget {
   Widget build(BuildContext context) {
     final plan = state.plan;
     final textTheme = FamilyCompassTypography.of(context);
-    final semantic = FamilyCompassSemanticColors.of(context);
 
-    return ColoredBox(
-      color: semantic.pageBackground,
+    return PageAtmosphere(
       child: SafeArea(
         child: CustomScrollView(
           key: const PageStorageKey<String>('together-scroll'),

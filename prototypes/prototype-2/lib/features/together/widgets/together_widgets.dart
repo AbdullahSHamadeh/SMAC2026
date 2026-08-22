@@ -18,19 +18,7 @@ class TogetherSectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = FamilyCompassTypography.of(context);
-    final colors = Theme.of(context).colorScheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title, style: textTheme.titleLarge),
-        const SizedBox(height: FamilyCompassSpacing.xxs),
-        Text(
-          subtitle,
-          style: textTheme.bodyMedium?.copyWith(color: colors.onSurfaceVariant),
-        ),
-      ],
-    );
+    return SectionEyebrow(title: title, subtitle: subtitle);
   }
 }
 
@@ -62,53 +50,56 @@ class TogetherPlanCard extends StatelessWidget {
     final foreground =
         emphasized ? semantic.onGatheringContainer : colors.onSurface;
 
-    return Card(
+    return SoftCard(
       color: background,
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(icon,
-                    color: emphasized ? semantic.gathering : colors.primary),
-                const SizedBox(width: FamilyCompassSpacing.sm),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style:
-                            textTheme.titleMedium?.copyWith(color: foreground),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconWell(
+                icon: icon,
+                background: emphasized
+                    ? semantic.gathering
+                    : colors.primaryContainer,
+                foreground:
+                    emphasized ? semantic.onGathering : colors.onPrimaryContainer,
+              ),
+              const SizedBox(width: FamilyCompassSpacing.sm),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style:
+                          textTheme.titleMedium?.copyWith(color: foreground),
+                    ),
+                    const SizedBox(height: FamilyCompassSpacing.xxs),
+                    Text(
+                      detail,
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: foreground.withValues(alpha: 0.78),
                       ),
-                      const SizedBox(height: FamilyCompassSpacing.xxs),
-                      Text(
-                        detail,
-                        style: textTheme.bodyMedium?.copyWith(
-                          color: foreground.withValues(alpha: 0.78),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: FamilyCompassSpacing.md),
-            FilledButton(
-              onPressed: onPressed,
-              style: emphasized
-                  ? FilledButton.styleFrom(
-                      backgroundColor: semantic.gathering,
-                      foregroundColor: semantic.onGathering,
-                    )
-                  : null,
-              child: Text(actionLabel),
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: FamilyCompassSpacing.md),
+          FilledButton(
+            onPressed: onPressed,
+            style: emphasized
+                ? FilledButton.styleFrom(
+                    backgroundColor: semantic.gathering,
+                    foregroundColor: semantic.onGathering,
+                  )
+                : null,
+            child: Text(actionLabel),
+          ),
+        ],
       ),
     );
   }
@@ -129,24 +120,21 @@ class TogetherEmptyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(FamilyCompassSpacing.md),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              message,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: colors.onSurfaceVariant,
-                  ),
-            ),
-            if (actionLabel != null && onPressed != null) ...[
-              const SizedBox(height: FamilyCompassSpacing.sm),
-              FilledButton(onPressed: onPressed, child: Text(actionLabel!)),
-            ],
+    return SoftCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: colors.onSurfaceVariant,
+                ),
+          ),
+          if (actionLabel != null && onPressed != null) ...[
+            const SizedBox(height: FamilyCompassSpacing.sm),
+            FilledButton(onPressed: onPressed, child: Text(actionLabel!)),
           ],
-        ),
+        ],
       ),
     );
   }

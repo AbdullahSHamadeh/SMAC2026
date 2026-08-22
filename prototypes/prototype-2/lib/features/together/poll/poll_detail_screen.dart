@@ -55,8 +55,7 @@ class _PollDetailScreenState extends State<PollDetailScreen> {
     final colors = Theme.of(context).colorScheme;
     final allResponded = plan.responses.length == plan.participantIds.length;
 
-    return ColoredBox(
-      color: semantic.pageBackground,
+    return PageAtmosphere(
       child: SafeArea(
         child: CustomScrollView(
           key: const PageStorageKey<String>('poll-detail-scroll'),
@@ -310,7 +309,10 @@ class _ResponseTile extends StatelessWidget {
             .firstOrNull;
     return ListTile(
       key: ValueKey<String>('poll-response-$memberId'),
-      leading: CircleAvatar(child: Text(memberName(memberId).characters.first)),
+      leading: MemberAvatar(
+        initials: memberName(memberId).characters.first,
+        memberId: memberId,
+      ),
       title: Text(memberName(memberId)),
       subtitle: Text(
         response == null
